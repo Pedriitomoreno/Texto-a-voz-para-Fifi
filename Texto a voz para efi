@@ -1,0 +1,16 @@
+# Reconocimiento de texto a voz mediante phyton
+# Funcional en raspberry pi 4
+
+import speech_recognition as sr
+
+r = sr.Recognizer()
+
+with sr.Microphone() as source:
+    print("Di cualquier cosa...")
+    audio = r.listen(source)
+
+    try:
+        text = r.recognize_google(audio, language='pt-ES')
+        print("Que has dicho: {}".format(text))
+    except:
+        print("Perdón, no te he entendido!")
